@@ -14,7 +14,7 @@ Servers::Servers(size_t pt, std::string pw)
 
 Servers::~Servers()
 {
-	std::cout << "Get the F out! This ain't 4chan" << std::endl;
+	std::cout << "Goodbye my friend! It was a pleasure meeting you" << std::endl;
 }
 
 void Servers::CommandInit()
@@ -82,7 +82,7 @@ void    Servers::start()
 
     while (_end_server == false) //Loops and runs the poll function 
     {
-         std::cout << "Waiting for poll motherfucker ... ! : " << std::endl;
+         std::cout << "Waiting for poll... : " << std::endl;
         if (poll(_server_data.poll_fd, _server_data.nfds, COUNTDOWN) < 0) // Poll checks sockets for incoming messages
         {
             std::cerr << "Poll is not working man ! :( I'm CRASSSSSHHHING ... \n" ;
@@ -117,7 +117,7 @@ int Servers::TrackingFd()
         }
         if (_server_data.poll_fd[i].revents != POLLIN) //if error in socket received from socket, close socket
         {
-            std::cout << "POll_fd[" << i << "] has revents : " MAG <<  _server_data.poll_fd[i].revents << CLEAR << std::endl;
+            std::cout << "Poll_fd[" << i << "] has revents : " MAG <<  _server_data.poll_fd[i].revents << CLEAR << std::endl;
             // if (_server_data.poll_fd[i].revents == 17)
             // {
             //     CloseSocket(i);
@@ -186,7 +186,7 @@ void    Servers::ReceiveData(Users &user)
         {
             if (errno != EWOULDBLOCK)
             {
-                perror("Socket reception has failed, massive crash, connection will be flushed ! Bye loser XD");
+                perror("Socket reception has failed, massive crash, connection will be flushed!");
                 _close_connection = true;
                 return ;
             }
